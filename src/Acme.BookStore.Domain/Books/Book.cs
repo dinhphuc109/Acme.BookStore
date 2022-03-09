@@ -9,6 +9,7 @@ namespace Acme.BookStore.Books
 {
     public class Book : AuditedAggregateRoot<Guid>
     {
+        //leave some comment here for nothing!!
         public string Name { get; set; }
         public BookType Type { get; set; }
         public DateTime PublishDate { get; set; }
