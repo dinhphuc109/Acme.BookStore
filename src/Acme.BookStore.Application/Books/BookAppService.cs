@@ -13,6 +13,7 @@ using Volo.Abp.Domain.Repositories;
 namespace Acme.BookStore.Books
 {
     //test test git change
+    //test branch
     [Authorize(BookStorePermissions.Books.Default)]
     public class BookAppService :
         CrudAppService<
