@@ -2,9 +2,14 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Text;
+using Volo.Abp.Modularity;
 
 namespace Acme.BookStore.Books
 {
+    [DependsOn(
+    //...other dependencies
+    typeof(CreateUpdateBookDtoValidator) //Add the FluentValidation module
+    )]
     public class CreateUpdateBookDto
     {
         public Guid AuthorId { get; set; }
