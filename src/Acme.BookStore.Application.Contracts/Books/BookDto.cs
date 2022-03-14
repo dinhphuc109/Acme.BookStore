@@ -1,8 +1,13 @@
 ﻿using System;
 using Volo.Abp.Application.Dtos;
+using Volo.Abp.Modularity;
 
 namespace Acme.BookStore.Books
 {
+    [DependsOn(
+    //...other dependencies
+    typeof(BookDtoValidator) //Add the FluentValidation module
+    )]
     public class BookDto : AuditedEntityDto<Guid>
     {
         public Guid AuthorId { get; set; }
