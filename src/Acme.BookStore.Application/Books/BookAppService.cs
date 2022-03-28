@@ -4,7 +4,7 @@ using System.Linq.Dynamic.Core;
 using System.Linq;
 using System.Threading.Tasks;
 using Acme.BookStore.Authors;
-using Acme.BookStore.Permissions;
+
 using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
@@ -14,7 +14,7 @@ namespace Acme.BookStore.Books
 {
     //test test git change
     //test branch
-    [Authorize(BookStorePermissions.Books.Default)]
+    
     public class BookAppService :
         CrudAppService<
             Book, //The Book entity
@@ -113,6 +113,18 @@ namespace Acme.BookStore.Books
             );
 
             return authors.ToDictionary(x => x.Id, x => x);
+        }
+
+        public async Task CreateAsync(CreateBookDto input)
+        {
+             var book = new Book(
+                GuidGenerator.Create(),
+                input.Name,
+                input.Type,
+                input.Price
+            );
+
+           await Repository.InsertAsync(book);
         }
     }
 }
