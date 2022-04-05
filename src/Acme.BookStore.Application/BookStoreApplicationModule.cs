@@ -10,9 +10,9 @@ using Volo.Abp.TenantManagement;
 namespace Acme.BookStore;
 
 [DependsOn(
-    typeof(BookStoreDomainModule),
+
     typeof(AbpAccountApplicationModule),
-    typeof(BookStoreApplicationContractsModule),
+
     typeof(AbpIdentityApplicationModule),
     typeof(AbpPermissionManagementApplicationModule),
     typeof(AbpTenantManagementApplicationModule),
