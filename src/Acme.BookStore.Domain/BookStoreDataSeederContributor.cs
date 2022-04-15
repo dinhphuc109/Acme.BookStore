@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Acme.BookStore.Authors;
 using Acme.BookStore.Books;
+using Acme.BookStore.NhaCungCaps;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
@@ -18,11 +19,14 @@ namespace Acme.BookStore
         public BookStoreDataSeederContributor(
             IRepository<Book, Guid> bookRepository,
             IAuthorRepository authorRepository,
-            AuthorManager authorManager)
+            AuthorManager authorManager,
+            INCCRepository iNCCRepository,
+            NCCManager nCCManager)
         {
             _bookRepository = bookRepository;
             _authorRepository = authorRepository;
             _authorManager = authorManager;
+
         }
 
         public async Task SeedAsync(DataSeedContext context)

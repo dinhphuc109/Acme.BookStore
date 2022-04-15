@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.Application.Dtos;
 using Volo.Abp.Application.Services;
 using Volo.Abp.Domain.Repositories;
+using Acme.BookStore.Permissions;
 
 namespace Acme.BookStore.Books
 {
@@ -115,16 +116,6 @@ namespace Acme.BookStore.Books
             return authors.ToDictionary(x => x.Id, x => x);
         }
 
-        public async Task CreateAsync(CreateBookDto input)
-        {
-             var book = new Book(
-                GuidGenerator.Create(),
-                input.Name,
-                input.Type,
-                input.Price
-            );
 
-           await Repository.InsertAsync(book);
-        }
     }
 }

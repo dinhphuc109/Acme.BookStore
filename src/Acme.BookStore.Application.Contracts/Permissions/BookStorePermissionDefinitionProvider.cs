@@ -11,6 +11,11 @@ public class BookStorePermissionDefinitionProvider : PermissionDefinitionProvide
         var bookStoreGroup = context.AddGroup(BookStorePermissions.GroupName);
         //Define your own permissions here. Example:
         //myGroup.AddPermission(BookStorePermissions.MyPermission1, L("Permission:MyPermission1"));
+        var nCCsPermission = bookStoreGroup.AddPermission(BookStorePermissions.NhaCungCaps.Default, L("Permission:NhaCungCaps"));
+        nCCsPermission.AddChild(BookStorePermissions.NhaCungCaps.Create, L("Permission:NhaCungCaps.Create"));
+        nCCsPermission.AddChild(BookStorePermissions.NhaCungCaps.Edit, L("Permission:NhaCungCaps.Edit"));
+        nCCsPermission.AddChild(BookStorePermissions.NhaCungCaps.Delete, L("Permission:NhaCungCaps.Delete"));
+
         var booksPermission = bookStoreGroup.AddPermission(BookStorePermissions.Books.Default, L("Permission:Books"));
         booksPermission.AddChild(BookStorePermissions.Books.Create, L("Permission:Books.Create"));
         booksPermission.AddChild(BookStorePermissions.Books.Edit, L("Permission:Books.Edit"));

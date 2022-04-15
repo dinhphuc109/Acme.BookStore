@@ -40,6 +40,15 @@ namespace Acme.BookStore.Web.Menus
             context.Menu.AddItem(bookStoreMenu);
 
             //CHECK the PERMISSION
+            if (await context.IsGrantedAsync(BookStorePermissions.NhaCungCaps.Default))
+            {
+                bookStoreMenu.AddItem(new ApplicationMenuItem(
+                        "BooksStore.NhaCungCaps",
+                        l["Menu:NhaCungCaps"],
+                        url: "/NhaCungCaps"
+                    ));
+            }
+
             if (await context.IsGrantedAsync(BookStorePermissions.Books.Default))
             {
                 bookStoreMenu.AddItem(new ApplicationMenuItem(
