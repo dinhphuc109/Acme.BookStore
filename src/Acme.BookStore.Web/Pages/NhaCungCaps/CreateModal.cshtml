@@ -8,12 +8,15 @@
 @{
     Layout = null;
 }
-<abp-dynamic-form abp-model="NCC" asp-page="/NhaCungCaps/CreateModal">
+<form asp-page="/NhaCungCaps/CreateModal">
     <abp-modal>
         <abp-modal-header title="@L["NewNCC"].Value"></abp-modal-header>
         <abp-modal-body>
-            <abp-form-content />
+            <abp-input asp-for="NCC.Name" />
+            <abp-input asp-for="NCC.Address" />
+            <abp-input asp-for="NCC.TellPhone" />
+            <abp-select asp-for="NCC.Type" />
         </abp-modal-body>
         <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
     </abp-modal>
-</abp-dynamic-form>
+</form>

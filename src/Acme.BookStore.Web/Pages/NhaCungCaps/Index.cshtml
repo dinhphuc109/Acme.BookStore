@@ -1,12 +1,15 @@
 ﻿@page
 @using Acme.BookStore.Localization
+@using Microsoft.AspNetCore.Authorization
+@using Acme.BookStore.Permissions
 @using Acme.BookStore.Web.Pages.NhaCungCaps
 @using Microsoft.Extensions.Localization
-@model IndexModel
 @inject IStringLocalizer<BookStoreResource> L
+@inject IAuthorizationService AuthorizationService
+@model IndexModel
 @section scripts
 {
-    <abp-script src="/Pages/NhaCungCaps/Index.js" />
+    <abp-script src="/Pages/NhaCungCaps/Index.js"/>
 }
 <abp-card>
     <abp-card-header>
@@ -15,10 +18,14 @@
                 <abp-card-title>@L["NhaCungCap"]</abp-card-title>
             </abp-column>
             <abp-column size-md="_6" class="text-end">
-                <abp-button id="NewNCCButton"
-                            text="@L["NewNCC"].Value"
-                            icon="plus"
-                            button-type="Primary"/>
+                @if (await AuthorizationService
+                    .IsGrantedAsync(BookStorePermissions.NhaCungCaps.Create))
+                {
+                    <abp-button id="NewNCCButton"
+                                text="@L["NewNCC"].Value"
+                                icon="plus"
+                                button-type="Primary"/>
+                }
             </abp-column>
         </abp-row>
     </abp-card-header>

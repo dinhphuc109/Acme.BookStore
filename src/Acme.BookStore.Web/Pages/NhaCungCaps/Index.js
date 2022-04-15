@@ -2,6 +2,7 @@
     var l = abp.localization.getResource('BookStore');
     var createModal = new abp.ModalManager(abp.appPath + 'NhaCungCaps/CreateModal');
     var editModal = new abp.ModalManager(abp.appPath + 'NhaCungCaps/EditModal');
+
     var dataTable = $('#NCCTable').DataTable(
         abp.libs.datatables.normalizeConfiguration({
             serverSide: true,
@@ -18,12 +19,14 @@
                             [
                                 {
                                     text: l('Edit'),
+                                    visible: abp.auth.isGranted('BookStore.NhaCungCaps.Edit'),
                                     action: function (data) {
                                         editModal.open({ id: data.record.id });
                                     }
                                 },
                                 {
                                     text: l('Delete'),
+                                    visible: abp.auth.isGranted('BookStore.NhaCungCaps.Delete'),
                                     confirmMessage: function (data) {
                                         return l('NCCDeletionConfirmationMessage', data.record.name);
                                     },
@@ -58,16 +61,6 @@
                         return l('Enum:NCCType:' + data);
                     }
                 },
-                {
-                    title: l('CreationTime'), data: "creationTime",
-                    render: function (data) {
-                        return luxon
-                            .DateTime
-                            .fromISO(data, {
-                                locale: abp.localization.currentCulture.name
-                            }).toLocaleString(luxon.DateTime.DATETIME_SHORT);
-                    }
-                }
             ]
         })
     );
