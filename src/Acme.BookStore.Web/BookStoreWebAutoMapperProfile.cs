@@ -10,8 +10,11 @@ public class BookStoreWebAutoMapperProfile : Profile
     public BookStoreWebAutoMapperProfile()
     {
         //Define your AutoMapper configuration here for the Web project.
-        CreateMap<NCCDto, CreateUpdateNCCDto>();
+        
         CreateMap<BookDto, CreateUpdateBookDto>();
+        CreateMap<NCCDto, Pages.NhaCungCaps.EditModalModel.EditNCCViewModel>();
+        CreateMap<Pages.NhaCungCaps.EditModalModel.EditNCCViewModel, UpdateNCCDto>();
+        CreateMap<Pages.NhaCungCaps.CreateModalModel.CreateNCCViewModel, CreateNCCDto>();
 
         CreateMap<Pages.Authors.CreateModalModel.CreateAuthorViewModel, CreateAuthorDto>();
 

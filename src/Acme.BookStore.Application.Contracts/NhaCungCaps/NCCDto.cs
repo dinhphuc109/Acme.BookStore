@@ -6,7 +6,7 @@ using Volo.Abp.Application.Dtos;
 
 namespace Acme.BookStore.NhaCungCaps
 {
-    public class NCCDto : AuditedEntityDto<Guid>
+    public class NCCDto : EntityDto<Guid>
     {
         public string Name { get; set; }
         public string Address { get; set; }

@@ -2,17 +2,16 @@ using Acme.BookStore.NhaCungCaps;
 using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
+using Acme.BookStore.NhaCungCap;
 
 namespace Acme.BookStore.Web.Pages.NhaCungCaps
 {
     public class EditModalModel : BookStorePageModel
     {
-        [HiddenInput]
-        [BindProperty(SupportsGet = true)]
-        public Guid Id { get; set; }
-
         [BindProperty]
-        public CreateUpdateNCCDto NCC { get; set; }
+        public EditNCCViewModel NCC { get; set; }
+
 
         private readonly INCCAppService _nCCAppService;
 
@@ -20,15 +19,35 @@ namespace Acme.BookStore.Web.Pages.NhaCungCaps
         {
             _nCCAppService = nCCAppService;
         }
-        public async Task OnGetasync()
+
+        public async Task OnGetAsync(Guid id)
         {
-            var nCCDto = await _nCCAppService.GetAsync(Id);
-            NCC = ObjectMapper.Map<NCCDto, CreateUpdateNCCDto>(nCCDto);
+            var nccDto = await _nCCAppService.GetAsync(id);
+            NCC = ObjectMapper.Map<NCCDto, EditNCCViewModel>(nccDto);
         }
+
         public async Task<IActionResult> OnPostAsync()
         {
-            await _nCCAppService.UpdateAsync(Id, NCC);
+            await _nCCAppService.UpdateAsync(
+            NCC.Id,
+            ObjectMapper.Map<EditNCCViewModel, UpdateNCCDto>(NCC)
+            );
             return NoContent();
+        }
+
+        public class EditNCCViewModel
+        {
+            [HiddenInput]
+            public Guid Id { get; set; }
+            [Required]
+            [StringLength(NCCConsts.MaxNameLength)]
+            public string Name { get; set; }
+
+            public string Address { get; set; }
+
+            public string TellPhone { get; set; }
+
+            public NCCType Type { get; set; } = NCCType.Undefined;
         }
     }
 }
