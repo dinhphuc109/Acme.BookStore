@@ -1,6 +1,6 @@
 ﻿@page
 @using Acme.BookStore.Localization
-@using Acme.BookStore.Web.Pages.NhaCungCaps
+@using Acme.BookStore.Web.Pages.Suppliers
 @using Microsoft.Extensions.Localization
 @using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
 @model CreateModalModel
@@ -8,15 +8,15 @@
 @{
     Layout = null;
 }
-<form asp-page="/NhaCungCaps/CreateModal">
+<form asp-page="/Suppliers/CreateModal">
     <abp-modal>
-        <abp-modal-header title="@L["NewNCC"].Value"></abp-modal-header>
+        <abp-modal-header title="@L["NewSupplier"].Value"></abp-modal-header>
         <abp-modal-body>
-            <abp-input asp-for="NCC.Name" />
-            <abp-input asp-for="NCC.Address" />
-            <abp-input asp-for="NCC.TellPhone" />
-            <abp-select asp-for="NCC.Type" />
+            <abp-input asp-for="Supplier.Name" />
+            <abp-input asp-for="Supplier.Address" />
+            <abp-input asp-for="Supplier.TelePhone" />
         </abp-modal-body>
         <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
     </abp-modal>
 </form>
+

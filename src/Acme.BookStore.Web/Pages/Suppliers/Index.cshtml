@@ -1,35 +1,36 @@
 ﻿@page
 @using Acme.BookStore.Localization
-@using Microsoft.AspNetCore.Authorization
 @using Acme.BookStore.Permissions
-@using Acme.BookStore.Web.Pages.NhaCungCaps
+@using Acme.BookStore.Web.Pages.Suppliers
+@using Microsoft.AspNetCore.Authorization
 @using Microsoft.Extensions.Localization
 @inject IStringLocalizer<BookStoreResource> L
 @inject IAuthorizationService AuthorizationService
 @model IndexModel
+
 @section scripts
 {
-    <abp-script src="/Pages/NhaCungCaps/Index.js"/>
+    <abp-script src="/Pages/Suppliers/Index.js"/>
 }
+
 <abp-card>
     <abp-card-header>
         <abp-row>
             <abp-column size-md="_6">
-                <abp-card-title>@L["NhaCungCap"]</abp-card-title>
+                <abp-card-title>@L["Suppliers"]</abp-card-title>
             </abp-column>
             <abp-column size-md="_6" class="text-end">
-                @if (await AuthorizationService
-                    .IsGrantedAsync(BookStorePermissions.NhaCungCaps.Create))
-                {
-                    <abp-button id="NewNCCButton"
-                                text="@L["NewNCC"].Value"
+
+                    <abp-button id="NewSupplierButton"
+                                text="@L["NewSupplier"].Value"
                                 icon="plus"
                                 button-type="Primary"/>
-                }
+                
             </abp-column>
         </abp-row>
     </abp-card-header>
     <abp-card-body>
-        <abp-table striped-rows="true" id="NCCTable"></abp-table>
+        <abp-table striped-rows="true" id="SuppliersTable"></abp-table>
     </abp-card-body>
 </abp-card>
+

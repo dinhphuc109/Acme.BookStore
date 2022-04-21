@@ -1,6 +1,6 @@
 ﻿using Acme.BookStore.Authors;
 using Acme.BookStore.Books;
-using Acme.BookStore.NhaCungCaps;
+using Acme.BookStore.Suppliers;
 using AutoMapper;
 
 namespace Acme.BookStore.Web;
@@ -12,9 +12,7 @@ public class BookStoreWebAutoMapperProfile : Profile
         //Define your AutoMapper configuration here for the Web project.
         
         CreateMap<BookDto, CreateUpdateBookDto>();
-        CreateMap<NCCDto, Pages.NhaCungCaps.EditModalModel.EditNCCViewModel>();
-        CreateMap<Pages.NhaCungCaps.EditModalModel.EditNCCViewModel, UpdateNCCDto>();
-        CreateMap<Pages.NhaCungCaps.CreateModalModel.CreateNCCViewModel, CreateNCCDto>();
+
 
         CreateMap<Pages.Authors.CreateModalModel.CreateAuthorViewModel, CreateAuthorDto>();
 
@@ -28,5 +26,11 @@ public class BookStoreWebAutoMapperProfile : Profile
 
         CreateMap<Pages.Books.EditModalModel.EditBookViewModel, CreateUpdateBookDto>();
 
+
+        CreateMap<Pages.Suppliers.CreateModalModel.CreateSupplierViewModel,
+          CreateSupplierDto>();
+        CreateMap<SupplierDto, Pages.Suppliers.EditModalModel.EditSupplierViewModel>();
+        CreateMap<Pages.Suppliers.EditModalModel.EditSupplierViewModel,
+          UpdateSupplierDto>();
     }
 }

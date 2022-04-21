@@ -56,6 +56,11 @@
                 },
 
                 {
+                    title: l('Supplier'),
+                    data: "supplierName"
+                },
+
+                {
                     title: l('Type'),
                     data: "type",
                     render: function (data) {

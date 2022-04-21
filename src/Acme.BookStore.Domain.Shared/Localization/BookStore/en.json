@@ -61,10 +61,12 @@
     "Permission:NhaCungCaps.Delete": "Deleting the NhaCungCap",
     "Menu:Authors": "Authors",
     "Authors": "Authors",
+    "Menu:Suppliers": "Suppliers",
+    "Suppliers": "Suppliers",
     "AuthorDeletionConfirmationMessage": "Are you sure to delete the author '{0}'?",
     "BirthDate": "Birth date",
     "NewAuthor": "New author"
-
+ 
   }
 
 }

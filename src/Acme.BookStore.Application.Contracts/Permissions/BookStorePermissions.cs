@@ -20,12 +20,6 @@
             public const string Delete = Default + ".Delete";
         }
 
-        public static class NhaCungCaps
-        {
-            public const string Default = GroupName + ".NhaCungCaps";
-            public const string Create = Default + ".Create";
-            public const string Edit = Default + ".Edit";
-            public const string Delete = Default + ".Delete";
-        }
+
     }
 }

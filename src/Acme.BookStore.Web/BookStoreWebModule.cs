@@ -93,9 +93,7 @@ public class BookStoreWebModule : AbpModule
             options.Conventions.AuthorizePage("/Books/Index", BookStorePermissions.Books.Default);
             options.Conventions.AuthorizePage("/Books/CreateModal", BookStorePermissions.Books.Create);
             options.Conventions.AuthorizePage("/Books/EditModal", BookStorePermissions.Books.Edit);
-            options.Conventions.AuthorizePage("/NhaCungCaps/Index", BookStorePermissions.NhaCungCaps.Default);
-            options.Conventions.AuthorizePage("/NhaCungCaps/CreateModal", BookStorePermissions.NhaCungCaps.Create);
-            options.Conventions.AuthorizePage("/NhaCungCaps/EditModal", BookStorePermissions.NhaCungCaps.Edit);
+
         });
     }
 

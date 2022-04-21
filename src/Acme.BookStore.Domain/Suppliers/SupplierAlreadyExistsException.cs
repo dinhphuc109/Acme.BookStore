@@ -2,16 +2,15 @@
 using System.Runtime.Serialization;
 using Volo.Abp;
 
-namespace Acme.BookStore.NhaCungCaps
+namespace Acme.BookStore.Suppliers
 {
-    [Serializable]
-    internal class NCCAlreadyExistsException : BusinessException
+    public class SupplierAlreadyExistsException : BusinessException
     {
-        public NCCAlreadyExistsException(string name)
+
+        public SupplierAlreadyExistsException(string name)
             : base(BookStoreDomainErrorCodes.NCCAlreadyExists)
         {
             WithData("name", name);
         }
-
     }
 }
